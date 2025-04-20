@@ -316,8 +316,5 @@ Resampling results:
 
 Tuning parameter 'mtry' was held constant at a value of 15
 
-Google map API key 
-
-AIzaSyD_a0K-hZA-8tnQPPHjLx06-XRtAZwz9-c
 
 
