@@ -20,11 +20,12 @@ merge(x=murazMeltdf, y = bftm_adults_alpha) -> murazHillMerge_adults
 merge(x= murazMeltdf, y = bftm_topQuartiers) -> murazHillMerge_quartiers
 #ggplot for top quartiers by top quartier 
 p9 <- ggplot(murazHillMerge_quartiers, mapping = aes(x = murazHillMerge_quartiers$order_q, y =murazHillMerge_quartiers$value, colour = murazHillMerge_quartiers$quartier_name))
-p9 + geom_smooth(se = FALSE) + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + scale_y_continuous(breaks = seq(0,150,25)) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14)) + xlab("Order q") + ylab("Hill Number")
+ggSmoothOut <-  p9 + geom_smooth(se = FALSE) + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + scale_y_continuous(breaks = seq(0,150,25)) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14)) + xlab("Order q") + ylab("Hill Number")
 p10 <- ggplot(murazHillquart_integers, mapping = aes(x = murazHillquart_integers$order_factor, y =murazHillquart_integers$value, colour = murazHillquart_integers$quartier_name))
-p10+geom_boxplot()
-p10+geom_boxplot() + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + scale_y_continuous(breaks = seq(0,225,25)) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14)) + xlab("Order q") + ylab("Hill Number") + ylim(c(0,175))
-Kruskal and Dunn for q =0, 1, 2
+# p10+geom_boxplot()
+ggBoxOut <- p10 + geom_boxplot() + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + scale_y_continuous(breaks = seq(0,225,25)) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14)) + xlab("Order q") + ylab("Hill Number") + ylim(c(0,175))
+
+#Kruskal and Dunn for q =0, 1, 2
 
 ################# q = 0 ########################################
 
@@ -170,7 +171,7 @@ kruskal.test(bftm_topQuartiers$Bacteria.Firmicutes.Clostridia.Clostridiales.Rumi
 
 Sporobacter_gg <- ggplot(data = bftm_topQuartiers, aes(y = bftm_topQuartiers$Bacteria.Firmicutes.Clostridia.Clostridiales.Ruminococcaceae.Sporobacter, x = bftm_topQuartiers$quartier_name))
 
-Sporobacter_gg + geom_boxplot(mapping = aes(color = bftm_topQuartiers$quartier_name ))  + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14), title = element_text(hjust = 0.5)) + xlab("Compound") + ylab("Sporobacter Abundance") + ggtitle("Sporobacter Abundance"
+Sporobacter_gg + geom_boxplot(mapping = aes(color = bftm_topQuartiers$quartier_name ))  + scale_color_manual(values = c("#b2182b","#ef8a62","purple","grey19","#67a9cf","#2166ac")) + theme(legend.position = c(0.8, 0.8), panel.grid.minor = element_blank(), axis.title = element_text(size=18), axis.text =element_text(size  = 14), title = element_text(hjust = 0.5)) + xlab("Compound") + ylab("Sporobacter Abundance") + ggtitle("Sporobacter Abundance")
                                                                                                                                                                                                                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                                                                                                                                                                                                                         
 ########################### Make tree from strain tracking #######################                                                                                                                                                                                                                                                                                                                                                                             

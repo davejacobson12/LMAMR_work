@@ -86,7 +86,7 @@ grep "NC_015385.1" -A 1  succinifaciens_single.fna > succinifaciens_genome.fna
 
 ### this is the script (vcf2fasta.py) that takes the vcf output and then converts it to a fasta, using the reference genome and depth of 5
 
-ls *.vcf | sed 's/.vcf//' | while read line; do python3 ../vcf_test.py $line.vcf succinifaciens_genome.fna $line\_test.fna; done
+ls *.vcf | sed 's/.vcf//' | while read line; do python3 ../vcf2fasta.py $line.vcf succinifaciens_genome.fna $line\_test.fna; done
 
 ### wrote a python script to pull out gene sequence from each mapped fasta file for the given marker genes
 
